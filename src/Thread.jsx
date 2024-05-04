@@ -16,7 +16,7 @@ function Thread({ messages }) {
         <div
          className={`thread ${isExpanded ? 'expanded' : 'collapsed'}`}
          onClick={toggleExpand}
-         style={{cursor: hasMultipleMessages ? 'pointer' : 'default'}}
+         style={{cursor: hasMultipleMessages && !isExpanded ? 'pointer' : 'default'}}
         >
             {isExpanded || !hasMultipleMessages ? 
                 messages.map((message, index) => (
