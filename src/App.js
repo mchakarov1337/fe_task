@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Thread from './Thread';
+import Thread from './components/Thread';
 import './styles.scss';
 
 function App() {
