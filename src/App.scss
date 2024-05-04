@@ -9,6 +9,8 @@ $text-color: #999999;
 
 :root {
   --background: #f5f5f5;
+  --message-count-high: #27aae1;
+  --message-count-low: #e89d40;
 } 
 
 
@@ -18,7 +20,7 @@ body {
   font-family: 'Comfortaa', sans-serif;
 }
 
-// Flexbox Mixin
+
 @mixin flex-container($direction: row, $justify: center, $align: center, $wrap: nowrap) {
   display: flex;
   flex-direction: $direction;
@@ -27,12 +29,18 @@ body {
   flex-wrap: $wrap;
 }
 
+@mixin grid-layout($columns, $gap: 20px) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-gap: $gap;
+}
+
 .container {
   @include flex-container(column, center,center, nowrap);
   width: 100%;
   max-width: 768px;
   min-width: 320px;
-  margin: 0 auto;
+  margin: 40px auto 40px auto;
 }
 
 .thread {
@@ -46,7 +54,7 @@ body {
   &.expanded {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 40px;
     box-shadow: none;
 
     > .message {
@@ -62,7 +70,7 @@ body {
     position: absolute;
     top: -10px;
     right: 25px;
-    background-color: $message-count-high; // default, change dynamically
+    background-color: $message-count-high;
     color: #fff;
     padding: 2px 50px;
     border-radius: 15px;
@@ -73,28 +81,24 @@ body {
 
 .message {
   position: relative;
+  @include grid-layout(75% 25%, 40px);
   background: #fff;
-  padding: 20px;
+  padding: 20px 30px;
   border-radius: 8px;
   z-index: 3;
 
-  > * {
-    margin: 0px;
-  }
-
-  &__question {
-    max-width: 80%;
+  &__content {
+     > * {
+      margin: 0px;
+     }
   }
 
   &__text {
     font-weight: bold;
+    margin: 10px 0px;
   }
 
   &__team-container {
-    position: absolute;
-    right: 30px;
-    top: 50px;
-    @include flex-container(column,end ,end ,nowrap);
 
     > * {
       margin: 0px;
