@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+$high-rating-color: #9335ff;
+$low-rating-color: #e89d40;
+$message-count-high: #27aae1;
+$message-count-low: #e89d40;
+$background-color: #f2f2f2;
+$text-color: #999999;
+
+:root {
+  --background: #f5f5f5;
+} 
+
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+  font-family: 'Comfortaa', sans-serif;
+}
+
+// Flexbox Mixin
+@mixin flex-container($direction: row, $justify: center, $align: center, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+.container {
+  @include flex-container(column, center,center, nowrap);
+  width: 100%;
+  max-width: 768px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+
+.thread {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+  &.expanded {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: none;
+
+    > .message {
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    }
+  }
+
+  &.collapsed {
+    margin-bottom: 40px;
+  }
+
+  &__tag {
+    position: absolute;
+    top: -10px;
+    right: 25px;
+    background-color: $message-count-high; // default, change dynamically
+    color: #fff;
+    padding: 2px 50px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    z-index: 4;
+  }
+}
+
+.message {
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 3;
+
+  > * {
+    margin: 0px;
+  }
+
+  &__question {
+    max-width: 80%;
+  }
+
+  &__text {
+    font-weight: bold;
+  }
+
+  &__team-container {
+    position: absolute;
+    right: 30px;
+    top: 50px;
+    @include flex-container(column,end ,end ,nowrap);
+
+    > * {
+      margin: 0px;
+    }
+  }
+}
