@@ -5,13 +5,14 @@ function Message({ data, index, messagesCount, setScore }) {
     const [boxShadow, setBoxShadow] = useState('');
 
     useEffect(() => {
-
       if (score >= 6 ){
         setScore('high');
       } else {
         setScore('low');
       }
+    }, [score, setScore]);
 
+    useEffect(() => {
       if (messagesCount > 1 && index === 0) { 
         const shadows = [];
         const color = '#f2f2f2';
@@ -24,7 +25,7 @@ function Message({ data, index, messagesCount, setScore }) {
     
         setBoxShadow(shadows.join(", "));
       }
-    }, [score, setScore, messagesCount, index]);
+    }, [messagesCount, index, setBoxShadow]);
 
 
     function formatDateString(dateString) {
