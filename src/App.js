@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Thread from './Thread';
-import './App.scss';
+import './styles.scss';
 
 function App() {
   const [threads, setThreads] = useState([]);
