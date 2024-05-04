@@ -42,7 +42,10 @@ function Message({ data, index, messagesCount, setScore }) {
   return (
     <div className="message" style={{boxShadow}}>
         <div className="message__content">
-            <h4 className="message__subject">{subject}</h4>
+            <h4 
+            className="message__subject"
+            style={{color: score >= 6 ? 'var(--high-rating-color)' : 'var(--low-rating-color)'}}
+            >{subject}</h4>
             <p className="message__question">{question}</p>
             <p className="message__text">{text}</p>
         </div>

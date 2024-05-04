@@ -13,7 +13,11 @@ function Thread({ messages }) {
     }
 
     return (
-        <div className={`thread ${isExpanded ? 'expanded' : 'collapsed'}`} onClick={toggleExpand}>
+        <div
+         className={`thread ${isExpanded ? 'expanded' : 'collapsed'}`}
+         onClick={toggleExpand}
+         style={{cursor: hasMultipleMessages ? 'pointer' : 'default'}}
+        >
             {isExpanded || !hasMultipleMessages ? 
                 messages.map((message, index) => (
                     <Message key={message.id} data={message} index={index} setScore={setScore} />
