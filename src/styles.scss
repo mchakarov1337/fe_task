@@ -61,7 +61,7 @@ body {
 
 .message {
   position: relative;
-  @include grid-layout(75% 25%, 20px);
+  @include grid-layout(60% 40%, 20px);
   background: #fff;
   padding: 20px 30px;
   border-radius: 8px;
